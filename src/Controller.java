@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 import org.apache.ftpserver.FtpServer;
 import org.apache.ftpserver.FtpServerFactory;
 import org.apache.ftpserver.ftplet.Authority;
-import org.apache.ftpserver.ftplet.FtpException;
 import org.apache.ftpserver.ftplet.UserManager;
 import org.apache.ftpserver.listener.ListenerFactory;
 import org.apache.ftpserver.ssl.SslConfigurationFactory;
@@ -70,7 +69,7 @@ public class Controller implements Initializable {
             //Save the user to the user list on the filesystem
             userManager.save(user);
             progressArea.appendText(usernameField.getText() + " user created.\n");
-        } catch (IOException | FtpException exception) {
+        } catch (Exception exception) {
             exception.printStackTrace(System.err);
             progressArea.appendText(usernameField.getText() + " user creation failed.\n");
         }
